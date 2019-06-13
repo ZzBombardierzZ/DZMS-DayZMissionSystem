@@ -1,167 +1,250 @@
 /*
-	Usage: [_crate,"type"] execVM "dir\DZMSBox.sqf";
-		_crate is the crate to fill
-		"type" is the type of crate
-		"type" can be weapons or medical
+	_crate is the object to fill
+	_type is the type of crate
 */
 _crate = _this select 0;
 _type = _this select 1;
-
-// Clear the current cargo
-clearWeaponCargoGlobal _crate;
-clearMagazineCargoGlobal _crate;
-
-// Define lists. Some lists are defined in DZMSWeaponCrateList.sqf in the ExtConfig.
-_bpackList = ["DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Pouch","DZ_ALICE_Pack_EP1","DZ_TK_Assault_Pack_EP1","DZ_British_ACU","DZ_CivilBackpack_EP1","DZ_Backpack_EP1"];
-_gshellList = ["HandGrenade_west","FlareGreen_M203","FlareWhite_M203"];
-_medical = ["ItemBandage","ItemMorphine","ItemEpinephrine","ItemPainkiller","ItemWaterbottle","FoodMRE","ItemAntibiotic","ItemBloodbag"];
-_money = ["ItemSilverBar","ItemSilverBar10oz","ItemGoldBar","ItemGoldBar10oz"];
-
-_ammoRU = [
-	"30Rnd_545x39_AK","30Rnd_545x39_AK","30Rnd_545x39_AKSD","75Rnd_545x39_RPK",
-	"30Rnd_762x39_AK47","75Rnd_762x39_RPK",
-	"10Rnd_762x54_SVD","100Rnd_762x54_PK",
-	"30Rnd_762x39_SA58","50Rnd_762x54_UK59",
-	"1Rnd_HE_GP25","FlareGreen_GP25","1Rnd_Smoke_GP25",
-	"HandGrenade_East","SmokeShell","SmokeShellRed","SmokeShellGreen","PipeBomb"
-];
-
-_ammoUS = [
-	"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_StanagSD","200Rnd_556x45_M249",
-	"20Rnd_762x51_DMR","100Rnd_762x51_M240",
-	"30Rnd_556x45_G36","30Rnd_556x45_G36SD",
-	"20Rnd_762x51_FNFAL","5Rnd_86x70_L115A1",
-	"1Rnd_HE_M203","FlareGreen_M203","1Rnd_Smoke_M203",
-	"HandGrenade_West"
-];
 
 //////////////////////////////////////////////////////////////////
 // Medical Crates
 if (_type == "medical") then {
 	// load medical
-	_scount = count _medical;
+	_scount = count DZMSMeds;
 	for "_x" from 0 to 40 do {
 		_sSelect = floor(random _sCount);
-		_item = _medical select _sSelect;
+		_item = DZMSMeds select _sSelect;
 		_crate addMagazineCargoGlobal [_item,(round(random 2))];
 	};
+};
+
+////////////////////////////////////////////////////////////////
+// General Store Crate
+if (_type == "store") then {
+	// load food/drink
+	_scount = count DZMSGeneralStore;
+	for "_x" from 0 to 40 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSGeneralStore select _sSelect;
+		_crate addMagazineCargoGlobal [_item,(round(random 2))];
+	};
+	
+	// load survival tools
+	_scount = count DZMSCrateTools;
+	for "_x" from 0 to 4 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSCrateTools select _sSelect;
+		_crate addWeaponCargoGlobal [_item, 1];
+	};
+	
+	// load packs
+	_scount = count DZMSPacks;
+	for "_x" from 0 to 2 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSPacks select _sSelect;
+		_crate addBackpackCargoGlobal [_item,1];
+	};
+	 
+	// load pistols
+	_scount = count DZMSPistol;
+	for "_x" from 0 to 2 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSPistol select _sSelect;
+		_crate addWeaponCargoGlobal [_item,1];
+		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		if (count _ammo > 0) then {
+			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
+		};
+		if (!DZMSOverwatch) then {
+			_cfg = configFile >> "CfgWeapons" >> _item >> "Attachments";
+			if (isClass _cfg && count _cfg > 0) then {
+				_attach = configName (_cfg call BIS_fnc_selectRandom);
+				_crate addMagazineCargoGlobal [_attach,1];
+			};
+		};
+	};
+	
+	
 };
 
 //////////////////////////////////////////////////////////////////
 // Ammo Boxes
 if (_type == "ammoRU") then {
-	_scount = count _ammoRU;
+	_scount = count DZMSAmmoRU;
 	for "_x" from 0 to 25 do {
 		_sSelect = floor(random _sCount);
-		_item = _ammoRU select _sSelect;
+		_item = DZMSAmmoRU select _sSelect;
 		_crate addMagazineCargoGlobal [_item,(round(random 2))];
 	};
 };
 if (_type == "ammoUS") then {
-	_scount = count _ammoUS;
+	_scount = count DZMSAmmoUS;
 	for "_x" from 0 to 25 do {
 		_sSelect = floor(random _sCount);
-		_item = _ammoUS select _sSelect;
+		_item = DZMSAmmoUS select _sSelect;
 		_crate addMagazineCargoGlobal [_item,(round(random 2))];
 	};
 };
 
 ///////////////////////////////////////////////////////////////////
-// Weapon Crates
+// Weapon Crate Small
 if (_type == "weapons") then {
 	// load grenades
-	_scount = count _gshellList;
+	_scount = count DZMSGrenades;
 	for "_x" from 0 to 2 do {
 		_sSelect = floor(random _sCount);
-		_item = _gshellList select _sSelect;
+		_item = DZMSGrenades select _sSelect;
 		_crate addMagazineCargoGlobal [_item,(round(random 2))];
 	};
    
 	// load packs
-	_scount = count _bpackList;
+	_scount = count DZMSPacks;
 	for "_x" from 0 to 3 do {
 		_sSelect = floor(random _sCount);
-		_item = _bpackList select _sSelect;
+		_item = DZMSPacks select _sSelect;
+		_crate addBackpackCargoGlobal [_item,1];
+	};
+	 
+	// load pistols and attachments
+	_scount = count DZMSPistol;
+	for "_x" from 0 to 2 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSPistol select _sSelect;
+		_crate addWeaponCargoGlobal [_item,1];
+		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		if (count _ammo > 0) then {
+			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
+		};
+		if (!DZMSOverwatch) then {
+			_cfg = configFile >> "CfgWeapons" >> _item >> "Attachments";
+			if (isClass _cfg && count _cfg > 0) then {
+				_attach = configName (_cfg call BIS_fnc_selectRandom);
+				_crate addMagazineCargoGlobal [_attach,1];
+			};
+		};
+	};
+	
+	// Load Weapons and attachments
+	for "_x" from 0 to 5 do {
+		_wepArray = DZMSCrateWeps call BIS_fnc_selectRandom;
+		_item = _wepArray call BIS_fnc_selectRandom;
+		_crate addWeaponCargoGlobal [_item,1];
+		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		if (count _ammo > 0) then {
+			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
+		};
+		if (!DZMSOverwatch) then {
+			_cfg = configFile >> "CfgWeapons" >> _item >> "Attachments";
+			if (isClass _cfg && count _cfg > 0) then {
+				_attach = configName (_cfg call BIS_fnc_selectRandom);
+				_crate addMagazineCargoGlobal [_attach,1];
+			};
+		};
+	};
+};
+
+///////////////////////////////////////////////////////////////////
+// Weapon Crate Large
+if (_type == "weapons2") then {
+	// load grenades
+	_scount = count DZMSGrenades;
+	for "_x" from 0 to 5 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSGrenades select _sSelect;
+		_crate addMagazineCargoGlobal [_item,(round(random 2))];
+	};
+   
+	// load packs
+	_scount = count DZMSPacks;
+	for "_x" from 0 to 3 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSPacks select _sSelect;
 		_crate addBackpackCargoGlobal [_item,1];
 	};
 	 
 	// load pistols
-	_scount = count DZMSpistolList;
-	for "_x" from 0 to 2 do {
+	_scount = count DZMSPistol;
+	for "_x" from 0 to 3 do {
 		_sSelect = floor(random _sCount);
-		_item = DZMSpistolList select _sSelect;
+		_item = DZMSPistol select _sSelect;
 		_crate addWeaponCargoGlobal [_item,1];
 		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
 		if (count _ammo > 0) then {
 			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
 		};
 	};
-
-	//load sniper
-	_scount = count DZMSsniperList;
-	for "_x" from 0 to 1 do {
-		_sSelect = floor(random _sCount);
-		_item = DZMSsniperList select _sSelect;
+	
+	// Load Weapons
+	for "_x" from 0 to 10 do {
+		_wepArray = DZMSCrateWeps call BIS_fnc_selectRandom;
+		_item = _wepArray call BIS_fnc_selectRandom;
 		_crate addWeaponCargoGlobal [_item,1];
 		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
 		if (count _ammo > 0) then {
 			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
 		};
-	};
-
-	//load mg
-	_scount = count DZMSmgList;
-	for "_x" from 0 to 1 do {
-		_sSelect = floor(random _sCount);
-		_item = DZMSmgList select _sSelect;
-		_crate addWeaponCargoGlobal [_item,1];
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
-		if (count _ammo > 0) then {
-			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
-		};
-	};
-
-	//load primary
-	_scount = count DZMSprimaryList;
-	for "_x" from 0 to 2 do {
-		_sSelect = floor(random _sCount);
-		_item = DZMSprimaryList select _sSelect;
-		_crate addWeaponCargoGlobal [_item,1];
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
-		if (count _ammo > 0) then {
-			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
+		if (!DZMSOverwatch) then {
+			_cfg = configFile >> "CfgWeapons" >> _item >> "Attachments";
+			if (isClass _cfg && count _cfg > 0) then {
+				_attach = configName (_cfg call BIS_fnc_selectRandom);
+				_crate addMagazineCargoGlobal [_attach,1];
+			};
 		};
 	};
 };
 
 ///////////////////////////////////////////////////////////////////
-// Epoch Supply Crates
+// Supply Crate
 if (_type == "supply") then {
 	// load tools
-	_scount = count DZMSConTools;
+	_scount = count DZMSBuildTools;
 	for "_x" from 0 to 2 do {
 		_sSelect = floor(random _sCount);
-		_item = DZMSConTools select _sSelect;
+		_item = DZMSBuildTools select _sSelect;
 		_crate addWeaponCargoGlobal [_item, 1];
 	};
 	
-	// load construction
-	_scount = count DZMSConSupply;
-	for "_x" from 0 to 30 do {
+	// load construction supplies
+	_scount = count DZMSBuildSupply;
+	for "_x" from 0 to 15 do {
 		_sSelect = floor(random _sCount);
-		_item = DZMSConSupply select _sSelect;
-		_crate addMagazineCargoGlobal [_item,1];
+		_item = DZMSBuildSupply select _sSelect;
+		_qty = _item select 0;
+		_type = _item select 1;
+		_crate addMagazineCargoGlobal [_type,_qty];
 	};
 };
 
 ///////////////////////////////////////////////////////////////////
+// Supply Crate 2
+if (_type == "supply2") then {
+	// load tools
+	_scount = count DZMSBuildTools;
+	for "_x" from 0 to 1 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSBuildTools select _sSelect;
+		_crate addWeaponCargoGlobal [_item, 1];
+	};
+	
+	// load construction supplies
+	_scount = count DZMSBuildSupply2;
+	for "_x" from 0 to 8 do {
+		_sSelect = floor(random _sCount);
+		_item = DZMSBuildSupply2 select _sSelect;
+		_qty = _item select 0;
+		_type = _item select 1;
+		_crate addMagazineCargoGlobal [_type,_qty];
+	};
+};
+
+
+///////////////////////////////////////////////////////////////////
 // Epoch Money Crates
-if (_type == "money") then {
+if (_type == "highvalue") then {
 	// load money
-	_scount = count _money;
+	_scount = count DZMSHighValue;
 	for "_x" from 0 to 3 do {
 		_sSelect = floor(random _sCount);
-		_item = _money select _sSelect;
+		_item = DZMSHighValue select _sSelect;
 		_crate addMagazineCargoGlobal [_item,1];
 	};
 };

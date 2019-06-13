@@ -1,0 +1,43 @@
+//////////////////////////////
+////	Rolling Changelog
+////	DZMS v2.0
+//////////////////////////////
+
+[FIXED] Vanilla Mod vehicle hive saving. (using 308 call and "GetIn"/"GetOut" event handlers.)
+[FIXED] Damage handler reset on all clients in Vanilla Mod so players get the repair option before restart.
+
+[ADDED] New data management system.
+[ADDED] Auto-detect Vanilla Mod, Epoch, and Overpoch
+[ADDED] Reworked mission files. All can be either Hero or Bandit.
+[ADDED] Color coded mission markers, blue for hero, red for bandit.
+[ADDED] New mission announcement options.
+[ADDED] Language localization via community stringtable.
+[ADDED] Optional kill and humanity rewards based on AI type.
+[ADDED] Option for keys in mission vehicles - Epoch/Overpoch.
+[ADDED] ebayShopper inspired compact array system for mission objects, crates, and mission vehicles.
+[ADDED] Optional "god mode" mission vehicles and mission objects. (god mode on vehicles is disabled when players claim them by getting in)
+[ADDED] Option for mission timeout.
+[ADDED] New missions: Constructors, Armed Vehicles, General Store, and Firebase.
+[ADDED] Expanded loot selection including building supplies.
+[ADDED] Attachment system integration. AI and crates spawn random attachments based on weapon selection.
+[ADDED] AI cleanup handled by existing server function managed by FSM.
+[ADDED] DZMSSpawnCrate function includes overwrite for Vanilla Mod crate blacklisting.
+[ADDED] ZSC check wallet - Epoch/Overpoch.
+[ADDED] Optional mission marker AI counts.
+[ADDED] Optional complete mission cycling. (missions will not repeat until all in the list are run once)
+[ADDED] Optional AI Killfeed
+[ADDED] Optional M2 static gun placements on 11 missions - Epoch/Overpoch
+
+[ADJUSTED] ExtConfig folder contains configuration files for Vanilla Mod, Epoch, and Overpoch.
+[ADJUSTED] DZMSFindPos function updated to include DZE_SafeZonePosArray and WAI mission markers.
+[ADJUSTED] Mission timer files condensed to one loop.
+[ADJUSTED] DZMSWaitMissionComp.sqf monitors all mission functions. (AN2 Cargo mission has its own unique system)
+[ADJUSTED] C130 Crash rewritten to be compatible with Vanilla Mod.
+[ADJUSTED] Expanded AI skin selection for both Hero and Bandit AI. (skins not blacklisted in Vanilla Mod)
+[ADJUSTED] Mission vehicles remained locked until mission completion.
+[ADJUSTED] All unclaimed vehicles are deleted during mission cleanup.
+
+//////////////////////////////
+//	Special Thanks
+-- All the users who are enjoying and giving me feedback about the system!
+-- All the community members who have recommended better code!

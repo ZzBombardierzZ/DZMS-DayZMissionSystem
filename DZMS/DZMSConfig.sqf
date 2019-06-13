@@ -1,25 +1,51 @@
 /*
 	DayZ Mission System Config by Vampire
 	DZMS: https://github.com/SMVampire/DZMS-DayZMissionSystem
+	Updated for DZMS 2.0 by JasonTM
 */
 
 ///////////////////////////////////////////////////////////////////////
-// Do you want your players to gain humanity from killing mission AI?
+// Do you want to see how many AI are at the mission in the mission marker?
+// This option may cause excessive network traffic on high pop. servers as markers are refreshed every 2 seconds.
+DZMSAICount = false;
+
+// Time in minutes for a mission to timeout.
+DZMSMissionTimeOut = 20;
+
+// This is how many bandit missions are allowed to run simultaneously
+DZMSBanditLimit = 1;
+
+// This is how many hero missions are allowed to run simultaneously
+DZMSHeroLimit = 1;
+
+// Do you want to turn off damage to the mission objects?
+DZMSObjectsDamageOff = true;
+
+// Mission announcement style. Options: "Hint","TitleText","rollingMessages","DynamicText".
+//Note: The "Hint" messages will appear in the same area as common debug monitors.
+DZMSAnnounceType = "TitleText";
+
+// Turn this on to enable troubleshooting. RPT entries might show where problems occur.
+DZMSDebug = false;
+
+// Do you want your players to gain or lose humanity from killing mission AI?
 DZMSMissHumanity = true;
 
-// How Much Humanity?
-DZMSCntHumanity = 25;
+// How much humanity should a player lose for killing a hero AI?
+DZMSHeroHumanity = 25;
+
+// How much humanity should a player gain for killing a bandit AI?
+DZMSBanditHumanity = 25;
+
+// Do you want the players to get AI kill messages?
+DZMSKillFeed = false;
 
 // Do You Want AI to use NVGs?
 //(They are deleted on death)
 DZMSUseNVG = true;
 
-// Do you want AI to use RPG7V's?
-//(Only one unit per group spawn will have one)
-DZMSUseRPG = false;
-
-// Do you want AI kills to count as bandit kills?
-DZMSCntBanditKls = true;
+// Do you want bandit or hero AI kills to count towards player total?
+DZMSCntKills = true;
 
 // Do you want AI to disappear instantly when killed?
 DZMSCleanDeath = false;
@@ -28,22 +54,22 @@ DZMSCleanDeath = false;
 // (If DZMSCleanDeath is true, this doesn't matter)
 DZMSRunGear = false;
 
-// How long before bodies disappear? (in seconds) (default = 2400)
-DZMSBodyTime = 2400;
+// How long before bodies disappear? (in minutes) (default = 30)
+// Also used by WAI. Make sure they are the same if both are installed.
+ai_cleanup_time = 30;
 
 // Percentage of AI that must be dead before mission completes (default = 0)
 //( 0 is 0% of AI / 0.50 is 50% / 1 is 100% )
-DZMSRequiredKillPercent = 0;
+DZMSRequiredKillPercent = .85;
 
-// How long in seconds before mission scenery disappears (default = 1800 / 0 = disabled)
-DZMSSceneryDespawnTimer = 1800;
+// How long in minutes before mission scenery disappears (default = 30 / 0 = disabled)
+DZMSSceneryDespawnTimer = 30;
 
 // Should crates despawn with scenery? (default = false)
-DZMSSceneryDespawnLoot = false;
+DZMSSceneryDespawnLoot = true;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// You can adjust the weapons that spawn in weapon crates inside DZMSWeaponCrateList.sqf
-// You can adjust the AI's gear inside DZMSAIConfig.sqf in the ExtConfig folder also.
+// You can adjust AI gear/skills and crate loot in files contained in the ExtConfig folder.
 //////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -51,10 +77,10 @@ DZMSSceneryDespawnLoot = false;
 // Leave this false unless you know what you are doing.
 DZMSStaticPlc = false;
 
-// Array of static locations. X,Y,Z
+// Array of static locations. X,Y
 DZMSStatLocs = [
-	[0,0,0],
-	[0,0,0]
+	[0,0],
+	[0,0]
 ];
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -78,60 +104,70 @@ DZMSStaticSpawn = [
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Do you want vehicles from missions to save to the Database? (this means they will stay after a restart)
 // If False, vehicles will disappear on restart. It will warn a player who gets inside of a vehicle.
-// This is experimental, and off by default in this version.
 DZMSSaveVehicles = false;
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-// These are arrays of vehicle classnames for the missions.
-// Adjust to your liking.
-
-//Armed Choppers (Huey)
-DZMSChoppers = ["UH1H_DZ","Mi17_DZ"];
-
-//Small Vehicles (Humvees)
-DZMSSmallVic = ["hilux1_civil_3_open_EP1","SUV_TK_CIV_EP1","HMMWV_DZ","UAZ_Unarmed_UN_EP1"];
-
-//Large Vehicles (Urals)
-DZMSLargeVic = ["Ural_TK_CIV_EP1","Ural_INS"];
+// Setting this to true will prevent the mission vehicles from taking damage during the mission.
+DZMSVehDamageOff = true;
 
 /*///////////////////////////////////////////////////////////////////////////////////////////
 There are two types of missions that run simultaneously on a the server.
-The two types are Major and Minor missions.
-
-Major missions have a higher AI count, but also have more crates to loot.
-Minor missions have less AI than Major missions, but have crates that reflect that.
+The two types are Bandit and Hero missions.
 
 Below is the array of mission file names and the minimum and maximum times they run.
-Do not edit the Arrays unless you know what you are doing.
+If you don't want a certain mission to run on the server, comment out it's line.
+Remember that the last mission in the list should not have a comma after it.
 */
-DZMSMajorArray = ["SM1","SM2","SM3","SM4","SM5","SM6"];
-DZMSMinorArray = ["SM1","SM2","SM3","SM4","SM5","SM6"];
+
+DZMSMissionArray = 
+[
+	"AN2_Cargo_Drop", // Weapons
+	"Ural_Ambush", // Weapons, Medical Supplies, Building Supplies
+	"Squad", // No crate
+	"Humvee_Crash", // Weapons
+	//"APC_Mission", // Only uncomment for Epoch/Overpoch
+	"Armed_Vehicles", // No crate
+	"C130_Crash", // Building Supplies
+	"Construction_Site", // Building Supplies
+	"Firebase", // Building Supplies
+	"Helicopter_Crash", // Weapons
+	"Helicopter_Landing", // Weapons, Building Supplies
+	"General_Store", // Survival items found in supermarket
+	"Medical_Cache", // Medical Supplies
+	"Medical_Camp", // Medical Supplies
+	"Medical_Outpost", // Medical Supplies, Weapons
+	"NATO_Weapons_Cache", // Weapons
+	"Stash_house", // Weapons
+	"Weapons_Truck" // Weapons
+];
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-// The Minumum time in seconds before a major mission will run.
-// At least this much time will pass between major missions. Default = 650 (10.8 Minutes)
-DZMSMajorMin = 650;
+// The Minumum time in minutes before a bandit mission will run.
+// At least this much time will pass between bandit missions. Default = 5 minutes.
+DZMSBanditMin = 5;
 
-// Maximum time in seconds before a major mission will run.
-// A major mission will always run before this much time has passed. Default = 2000 (33.33 Minutes)
-DZMSMajorMax = 2000;
+// Maximum time in seconds before a bandit mission will run.
+// A bandit mission will always run before this much time has passed. Default = 10 minutes.
+DZMSBanditMax = 10;
 
-// Time in seconds before a minor mission will run.
-// At least this much time will pass between minor missions. Default = 600 (10 Minutes)
-DZMSMinorMin = 600;
+// Time in seconds before a hero mission will run.
+// At least this much time will pass between hero missions. Default = 5 minutes.
+DZMSHeroMin = 5;
 
-// Maximum time in seconds before a minor mission will run.
-// A minor mission will always run before this much time has passed. Default = 990 (16.5 Minutes)
-DZMSMinorMax = 990;
+// Maximum time in seconds before a hero mission will run.
+// A hero mission will always run before this much time has passed. Default = 10 minutes.
+DZMSHeroMax = 10;
 
 // Blacklist Zone Array -- missions will not spawn in these areas
-// format: [[x,y,z],radius]
-// Ex: [[06325,07807,0],300] //Starry Sobor
+// format: [[x,y,z],[x,y,z]]
+// The first set of xyz coordinates is the upper left corner of a box
+// The second set of xyz coordinates is the lower right corner of a box
 DZMSBlacklistZones = [
-	[[0,0,0],50]
+	//[[0,0,0],[0,0,0]]
+	//[[0,16000,0],[1000,-0,0]],	// Left edge of map Chernarus
+    [[0,16000,0],[16000.0,12500,0]] // Top edge of map Chernarus
 ];
 
 /*=============================================================================================*/
 // Do Not Edit Below This Line
 /*=============================================================================================*/
-DZMSVersion = "1.2";
+DZMSVersion = "2.0";
