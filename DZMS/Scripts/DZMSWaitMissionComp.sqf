@@ -63,8 +63,8 @@ while {!_complete} do {
 		_dot setMarkerType "Vehicle";
 		_dot setMarkerText format["%1 (%2 %3s)",_name,_aiCount,_aiType];;
 	} else {
-		// Only reset every 2 minutes if AI counter is disabled to reduce network traffic
-		if (diag_tickTime - _startTime > 120) then {
+		// Only reset every 30 seconds if AI counter is disabled to reduce network traffic
+		if (diag_tickTime - _startTime > 30) then {
 			deleteMarker _marker;
 			deleteMarker _dot;
 			_marker = createMarker ["DZMS" + _aiType + str(_mission), _coords];
