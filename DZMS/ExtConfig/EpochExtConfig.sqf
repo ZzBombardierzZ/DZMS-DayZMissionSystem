@@ -20,7 +20,7 @@ DZMSM2Static = false;
 ///////////////////////////////////////////////
 // Arrays of skin classnames for the AI to use
 DZMSBanditSkins = ["Bandit1_DZ","BanditW1_DZ","TK_INS_Warlord_EP1_DZ","GUE_Commander_DZ"];
-DZMSHeroSkins = ["Survivor3_DZ","Survivor2_DZ","SurvivorW2_DZ","Soldier1_DZ","Camo1_DZ","UN_CDF_Soldier_EP1"];
+DZMSHeroSkins = ["Soldier_Sniper_PMC_DZ","Survivor2_DZ","SurvivorW2_DZ","Soldier1_DZ","Camo1_DZ","UN_CDF_Soldier_EP1_DZ"];
 
 ////////////////////////
 // Array of AI Skills
@@ -112,21 +112,21 @@ DZMSGear4 = [
 // Adjust to your liking.
 
 //Armed Choppers
-DZMSChoppers = ["UH1H_DZE","Mi17_DZE","UH60M_MEV_EP1_DZ","BAF_Merlin_DZE","UH60M_EP1_DZE","CH_47F_EP1_DZE","MH60S_DZE","UH1Y_DZE"];
+DZMSChoppers = ["UH1H_DZE","Mi17_DZE","UH60M_MEV_EP1_DZ","BAF_Merlin_DZE","UH60M_EP1_DZE","CH_47F_EP1_DZE","MH60S_DZE","UH1Y_DZE","AW159_Lynx_BAF_DZE","Ka60_GL_PMC_DZE"];
 
 //Small Vehicles
-DZMSSmallVic = ["hilux1_civil_3_open_DZE","SUV_TK_CIV_EP1","HMMWV_DZ","UAZ_Unarmed_UN_EP1","HMMWV_Ambulance_CZ_DES_EP1","LandRover_TK_CIV_EP1","SUV_Camo"];
+DZMSSmallVic = ["hilux1_civil_3_open_DZE","SUV_TK_CIV_EP1_DZE","HMMWV_DZ","UAZ_Unarmed_UN_EP1_DZE","HMMWV_Ambulance_CZ_DES_EP1_DZE","LandRover_TK_CIV_EP1_DZE","SUV_Camo"];
 
 //Large Vehicles
-DZMSLargeVic = ["Ural_TK_CIV_EP1","Ural_CDF","Ural_UN_EP1","UralCivil_DZE","UralCivil2_DZE","MTVR_DES_EP1","MTVR","Kamaz_DZE","KamazOpen_DZE"];
+DZMSLargeVic = ["Ural_TK_CIV_EP1_DZE","Ural_CDF_DZE","Ural_UN_EP1_DZE","UralCivil_DZE","UralCivil2_DZE","MTVR_DES_EP1_DZE","MTVR_DZE","Kamaz_DZE","KamazOpen_DZE"];
 
 ////////////////////////////////////////////////////////////////
 // Weapons Arrays -  These can be adjusted as desired or make your own custom arrays
-DZMSPistol = ["M9_DZ","M9_SD_DZ","G17_DZ","G17_SD_DZ","Makarov_DZ","Makarov_SD_DZ","Revolver_DZ","M1911_DZ","Sa61_EP1","PDW_DZ"];
+DZMSPistol = ["M9_DZ","M9_SD_DZ","G17_DZ","G17_SD_DZ","Makarov_DZ","Makarov_SD_DZ","Revolver_DZ","M1911_DZ","Sa61_DZ","PDW_DZ"];
 DZMSAssault = ["M16A2_DZ","M4A1_DZ","M4A1_SD_DZ","SA58_RIS_DZ","L85A2_DZ","L85A2_SD_DZ","AKM_DZ","G36C_DZ","G36C_SD_DZ","G36A_Camo_DZ","G36K_Camo_DZ","G36K_Camo_SD_DZ"];
 DZMSLMG = ["L110A1_DZ","M249_DZ","M240_DZ","Mk48_DZ","RPK_DZ","UK59_DZ","PKM_DZ"];
 DZMSSMG = ["Bizon_DZ","Bizon_SD_DZ","MP5_DZ","MP5_SD_DZ"];
-DZMSSniper = ["Mosin_PU_DZ","M4SPR","M14_DZ","M24_DZ","M24_des_EP1","M40A3_DZ","SVD_DZ","SVD_des_EP1","FNFAL_DZ","DMR_DZ","L115A3_DZ","L115A3_2_DZ"];
+DZMSSniper = ["Mosin_PU_DZ","M4SPR_DZE","M14_DZ","M24_DZ","M24_DES_DZ","M40A3_DZ","SVD_DZ","SVD_PSO1_Gh_DES_DZ","FNFAL_DZ","DMR_DZ","L115A3_DZ","L115A3_2_DZ"];
 DZMSSingleShot = ["Remington870_DZ","M1014_DZ","Winchester1866_DZ","LeeEnfield_DZ","CZ550_DZ"];
 
 // Weapon arrays that can spawn on the AI
@@ -139,7 +139,7 @@ DZMSCrateWeps = [DZMSAssault,DZMSLMG,DZMSSniper];
 DZMSGeneralStore = ["forest_net_kit","ItemMixOil","ItemWaterBottleSafe","ItemSodaCoke","ItemSodaPepsi","ItemSodaMdew","ItemSodaMtngreen","ItemSodaR4z0r","ItemSodaClays","ItemSodaSmasht","ItemSodaDrwaste","ItemSodaFranka","ItemSodaLemonade","ItemSodaLirik","ItemSodaLvg","ItemSodaMzly","ItemSodaPeppsy","ItemSodaRabbit","ItemSodaSacrite","ItemSodaRocketFuel","ItemSodaGrapeDrink","ItemSherbet","FoodPistachio","FoodNutmix","FoodChipsSulahoops","FoodChipsMysticales","FoodChipsChocolate","FoodCandyChubby","FoodCandyAnders","FoodCandyLegacys","FoodCandyMintception","FoodCakeCremeCakeClean","FoodCanBeef","FoodCanPotatoes","FoodCanGriff","FoodCanBadguy","FoodCanBoneboy","FoodCanCorn","FoodCanCurgon","FoodCanDemon","FoodCanFraggleos","FoodCanHerpy","FoodCanDerpy","FoodCanOrlok","FoodCanPowell","FoodCanTylers","FoodCanUnlabeled","FoodCanBakedBeans","FoodCanSardines","FoodCanFrankBeans","FoodCanPasta","FoodCanRusUnlabeled","FoodCanRusStew","FoodCanRusPork","FoodCanRusPeas","FoodCanRusMilk","FoodCanRusCorn","ItemJerrycan"];
 DZMSCrateTools = ["ItemToolbox","ItemFishingPole","ItemGPS","ItemMap","ItemMachete","ItemKnife","ItemFlashlight","ItemMatchbox","ItemHatchet","Binocular_Vector"];
 DZMSMeds = [_bloodbag,"ItemBandage","ItemAntibiotic","ItemPainkiller","ItemMorphine","ItemAntibacterialWipe","ItemEpinephrine","FoodMRE","ItemWaterBottleSafe"];
-DZMSPacks = ["DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Pouch","DZ_ALICE_Pack_EP1","DZ_TK_Assault_Pack_EP1","DZ_British_ACU","DZ_CivilBackpack_EP1","DZ_Backpack_EP1","DZ_LargeGunBag_EP1"];
+DZMSPacks = ["Patrol_Pack_DZE1","Assault_Pack_DZE1","Czech_Vest_Pouch_DZE1","TerminalPack_DZE1","TinyPack_DZE1","ALICE_Pack_DZE1","TK_Assault_Pack_DZE1","CompactPack_DZE1","British_ACU_DZE1","GunBag_DZE1","NightPack_DZE1","SurvivorPack_DZE1","AirwavesPack_DZE1","CzechBackpack_DZE1","WandererBackpack_DZE1","LegendBackpack_DZE1","CoyoteBackpack_DZE1","LargeGunBag_DZE1"];
 
 // Items and tools that are only added to crates
 DZMSGrenades = ["HandGrenade_west","FlareGreen_M203","FlareWhite_M203"];

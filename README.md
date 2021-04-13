@@ -3,7 +3,7 @@
 
 A Logic and Usability Rewrite of the DayZChernarus Mission System.
 
-Completely overhauled to integrate new features and updates from DayZ Mod 1.9+/DayZ Epoch 1.0.6+.
+Completely overhauled to integrate new features and updates from DayZ Mod 1.9+/DayZ Epoch 1.0.7+.
 
 Current Version is 2.0
 
@@ -47,7 +47,7 @@ Installation
 
 9.	Repack your server PBO.
 
-### Mission File
+### Vanilla Mod Only
 
 1. Unpack your mission PBO.
 
@@ -71,9 +71,9 @@ Installation
 
 5. Repack your mission PBO unless you are using the option below.
 
-### Vanilla Mod Only
 
-	If you wish to have the vehicle repair option available on mission spawned vehicles before server restart then complete the following steps.
+
+### If you wish to have the vehicle repair option available on mission spawned vehicles before server restart then complete the following steps.
 
 1. Edit file init.sqf
 
