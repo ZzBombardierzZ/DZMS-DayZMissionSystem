@@ -149,7 +149,7 @@ DZMSVehKey = {
 	
 	_vehicle = _this;
 	
-	_keyColor = DZE_keyColors call BIS_fnc_selectRandom;
+	_keyColor = ["Green","Red","Blue","Yellow","Black"] call BIS_fnc_selectRandom;
 	_keyNumber = (floor(random 2500)) + 1;
 	_keySelected = format["ItemKey%1%2",_keyColor,_keyNumber];
 	_isKeyOK = isClass(configFile >> "CfgWeapons" >> _keySelected);
