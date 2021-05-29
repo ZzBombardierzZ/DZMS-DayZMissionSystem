@@ -33,7 +33,7 @@ diag_log text format["[DZMS]: Mission Clock Starting!"];
 //Lets get the scheduling loop started
 while {true} do {
 	
-	if (isNil "_array") then {_array = DZMSMissionArray;};
+	if (isNil "_array") then {_array = +DZMSMissionArray;};
 	_varName = "";
 	
 	// Bandit mission timer
