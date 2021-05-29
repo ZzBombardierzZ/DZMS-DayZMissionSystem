@@ -132,21 +132,3 @@ DZMSGrenades = ["HandGrenade_west","FlareGreen_M203","FlareWhite_M203"];
 DZMSBuildSupply = [[2,"equip_1inch_metal_pipe"],[2,"equip_2inch_metal_pipe"],[2,"equip_metal_sheet"],[2,"equip_metal_sheet_rusted"],[1,"equip_nails"],[5,"ItemStone"],[3,"ItemPlank"],[4,"ItemLog"],[1,"ItemCamonet"]]; // [Number to add to crate,Item]
 DZMSBuildSupply2 = [[1,"ItemScrews"],[1,"ItemPadlock"],[1,"ItemRSJ"],[1,"ItemConcreteBlock"],[1,"PartGeneric"],[1,"PartGlass"],[1,"PartFueltank"],[1,"PartWheel"],[1,"PartEngine"]];
 DZMSBuildTools = ["ItemCrowbar","ItemEtool","ItemToolbox","ItemSledgeHammer","ItemShovel","ItemPickaxe","ItemDIY_wood","ItemDIY_Gate"];
-
-DZMSAmmoRU = [
-	"30Rnd_545x39_AK","30Rnd_545x39_AK","30Rnd_545x39_AKSD","75Rnd_545x39_RPK",
-	"30Rnd_762x39_AK47","75Rnd_762x39_RPK",
-	"10Rnd_762x54_SVD","100Rnd_762x54_PK",
-	"30Rnd_762x39_SA58","50Rnd_762x54_UK59",
-	"1Rnd_HE_GP25","FlareGreen_GP25","1Rnd_Smoke_GP25",
-	"HandGrenade_East","SmokeShell","SmokeShellRed","SmokeShellGreen","PipeBomb"
-];
-
-DZMSAmmoUS = [
-	"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_StanagSD","200Rnd_556x45_M249",
-	"20Rnd_762x51_DMR","100Rnd_762x51_M240",
-	"30Rnd_556x45_G36","30Rnd_556x45_G36SD",
-	"20Rnd_762x51_FNFAL","5Rnd_86x70_L115A1",
-	"1Rnd_HE_M203","FlareGreen_M203","1Rnd_Smoke_M203",
-	"HandGrenade_West"
-];

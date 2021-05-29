@@ -66,25 +66,6 @@ if (_type == "store") then {
 	
 };
 
-//////////////////////////////////////////////////////////////////
-// Ammo Boxes
-if (_type == "ammoRU") then {
-	_scount = count DZMSAmmoRU;
-	for "_x" from 0 to 25 do {
-		_sSelect = floor(random _sCount);
-		_item = DZMSAmmoRU select _sSelect;
-		_crate addMagazineCargoGlobal [_item,(round(random 2))];
-	};
-};
-if (_type == "ammoUS") then {
-	_scount = count DZMSAmmoUS;
-	for "_x" from 0 to 25 do {
-		_sSelect = floor(random _sCount);
-		_item = DZMSAmmoUS select _sSelect;
-		_crate addMagazineCargoGlobal [_item,(round(random 2))];
-	};
-};
-
 ///////////////////////////////////////////////////////////////////
 // Weapon Crate Small
 if (_type == "weapons") then {

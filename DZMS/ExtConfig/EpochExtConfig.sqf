@@ -147,21 +147,3 @@ DZMSBuildSupply = [[3,"CinderBlocks"],[1,"MortarBucket"],[3,"ItemPole"],[3,"Part
 DZMSBuildSupply2 = [[3,"CinderBlocks"],[1,"MortarBucket"],[3,"ItemPole"],[3,"PartPlywoodPack"],[3,"PartPlankPack"],[3,"ItemSandbag"],[3,"ItemWire"],[1,"ItemFireBarrel_kit"],[1,"forest_large_net_kit"],[1,"ItemComboLock"],[1,"ItemLockbox"],[3,"ItemTankTrap"]]; // [Number to add to crate,Item]
 DZMSBuildTools = ["ItemCrowbar","ItemEtool","ItemToolbox","ItemSledgeHammer","ChainSaw"];
 DZMSHighValue = ["ItemBriefcase100oz","ItemVault"];
-
-DZMSAmmoRU = [
-	"30Rnd_545x39_AK","30Rnd_545x39_AK","30Rnd_545x39_AKSD","75Rnd_545x39_RPK",
-	"30Rnd_762x39_AK47","75Rnd_762x39_RPK",
-	"10Rnd_762x54_SVD","100Rnd_762x54_PK",
-	"30Rnd_762x39_SA58","50Rnd_762x54_UK59",
-	"1Rnd_HE_GP25","FlareGreen_GP25","1Rnd_Smoke_GP25",
-	"HandGrenade_East","SmokeShell","SmokeShellRed","SmokeShellGreen","PipeBomb"
-];
-
-DZMSAmmoUS = [
-	"30Rnd_556x45_Stanag","30Rnd_556x45_Stanag","30Rnd_556x45_StanagSD","200Rnd_556x45_M249",
-	"20Rnd_762x51_DMR","100Rnd_762x51_M240",
-	"30Rnd_556x45_G36","30Rnd_556x45_G36SD",
-	"20Rnd_762x51_FNFAL","5Rnd_86x70_L115A1",
-	"1Rnd_HE_M203","FlareGreen_M203","1Rnd_Smoke_M203",
-	"HandGrenade_West"
-];
