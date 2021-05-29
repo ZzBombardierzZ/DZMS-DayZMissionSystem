@@ -136,7 +136,9 @@ if (_type == "weapons") then {
 			_cfg = configFile >> "CfgWeapons" >> _item >> "Attachments";
 			if (isClass _cfg && count _cfg > 0) then {
 				_attach = configName (_cfg call BIS_fnc_selectRandom);
-				_crate addMagazineCargoGlobal [_attach,1];
+				if !(_attach == "Attachment_Tws") then { // blacklist thermal scope
+					_crate addMagazineCargoGlobal [_attach,1];
+				};
 			};
 		};
 	};
@@ -186,7 +188,9 @@ if (_type == "weapons2") then {
 			_cfg = configFile >> "CfgWeapons" >> _item >> "Attachments";
 			if (isClass _cfg && count _cfg > 0) then {
 				_attach = configName (_cfg call BIS_fnc_selectRandom);
-				_crate addMagazineCargoGlobal [_attach,1];
+				if !(_attach == "Attachment_Tws") then { // blacklist thermal scope
+					_crate addMagazineCargoGlobal [_attach,1];
+				};
 			};
 		};
 	};
