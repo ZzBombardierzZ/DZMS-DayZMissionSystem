@@ -25,59 +25,59 @@ DZMSHeroSkins = ["Survivor3_DZ","Survivor2_DZ","SurvivorW2_DZ","Soldier1_DZ","Ca
 ////////////////////////
 // Array of AI Skills
 DZMSSkills0 = [
-	["aimingAccuracy",0.10,0.125],
-	["aimingShake",0.45,0.55],
-	["aimingSpeed",0.45,0.55],
-	["endurance",0.40,0.50],
-	["spotDistance",0.30,0.45],
-	["spotTime",0.30,0.45],
-	["courage",0.40,0.60],
-	["reloadSpeed",0.50,0.60],
-	["commanding",0.40,0.50],
-	["general",0.40,0.60]
+	["aimingAccuracy",0.10],
+	["aimingShake",0.45],
+	["aimingSpeed",0.45],
+	["endurance",0.40],
+	["spotDistance",0.30],
+	["spotTime",0.30],
+	["courage",0.40],
+	["reloadSpeed",0.50],
+	["commanding",0.40],
+	["general",0.40]
 ];
 
 DZMSSkills1 = [
-	["aimingAccuracy",0.125,0.15],
-	["aimingShake",0.60,0.70],
-	["aimingSpeed",0.60,0.70],
-	["endurance",0.55,0.65],
-	["spotDistance",0.45,0.60],
-	["spotTime",0.45,0.60],
-	["courage",0.55,0.75],
-	["reloadSpeed",0.60,0.70],
-	["commanding",0.55,0.65],
-	["general",0.55,0.75]
+	["aimingAccuracy",0.125],
+	["aimingShake",0.60],
+	["aimingSpeed",0.60],
+	["endurance",0.55],
+	["spotDistance",0.45],
+	["spotTime",0.45],
+	["courage",0.55],
+	["reloadSpeed",0.60],
+	["commanding",0.55],
+	["general",0.55]
 ];
 
 DZMSSkills2 = [
-	["aimingAccuracy",0.15,0.20],
-	["aimingShake",0.75,0.85],
-	["aimingSpeed",0.70,0.80],
-	["endurance",0.70,0.80],
-	["spotDistance",0.60,0.75],
-	["spotTime",0.60,0.75],
-	["courage",0.70,0.90],
-	["reloadSpeed",0.70,0.80],
-	["commanding",0.70,0.90],
-	["general",0.70,0.90]
+	["aimingAccuracy",0.15],
+	["aimingShake",0.75],
+	["aimingSpeed",0.70],
+	["endurance",0.70],
+	["spotDistance",0.60],
+	["spotTime",0.60],
+	["courage",0.70],
+	["reloadSpeed",0.70],
+	["commanding",0.70],
+	["general",0.70]
 ];
 
 DZMSSkills3 = [	
-	["aimingAccuracy",0.20,0.25],
-	["aimingShake",0.85,0.95],
-	["aimingSpeed",0.80,0.90],
-	["endurance",0.80,0.90],
-	["spotDistance",0.70,0.85],
-	["spotTime",0.70,0.85],
-	["courage",0.80,1.00],
-	["reloadSpeed",0.80,0.90],
-	["commanding",0.80,0.90],
-	["general",0.80,1.00]
+	["aimingAccuracy",0.20],
+	["aimingShake",0.85],
+	["aimingSpeed",0.80],
+	["endurance",0.80],
+	["spotDistance",0.70],
+	["spotTime",0.70],
+	["courage",0.80],
+	["reloadSpeed",0.80],
+	["commanding",0.80],
+	["general",0.80]
 ];
 
 // Set the bloodbag type
-_bloodbag = if(dayz_classicBloodBagSystem) then {"ItemBloodbag"} else {"bloodBagONEG"};
+local _bloodbag = ["bloodBagONEG","ItemBloodbag"] select dayz_classicBloodBagSystem;
 
 /////////////////////////////////////////////////////////////
 // These are gear sets that will be randomly given to the AI
@@ -112,13 +112,13 @@ DZMSGear4 = [
 // Adjust to your liking.
 
 //Armed Choppers
-DZMSChoppers = ["UH1H_DZE","Mi17_DZE","UH60M_MEV_EP1_DZ","BAF_Merlin_DZE","UH60M_EP1_DZE","CH_47F_EP1_DZE","MH60S_DZE","UH1Y_DZE"];
+DZMSChoppers = ["BAF_Merlin_DZE","UH60M_MEV_EP1_DZ","CH_47F_EP1_DZE","UH1H_DZE","Mi17_DZE","UH60M_EP1_DZE","UH1Y_DZE","MH60S_DZE","UH1H_CDF_DZE","UH1H_WD_DZE","UH1H_2_DZE","UH1H_DES_DZE","UH1H_GREY_DZE","UH1H_BLACK_DZE","UH1H_SAR_DZE","Mi17_DZE","Mi17_TK_EP1_DZE","Mi17_UN_CDF_EP1_DZE","Mi17_CDF_DZE","Mi17_DES_DZE","Mi17_GREEN_DZE","Mi17_BLUE_DZE","Mi17_BLACK_DZE","Mi171Sh_CZ_EP1_DZE","MH60S_DZE","Ka60_GL_PMC_DZE","AW159_Lynx_BAF_DZE","UH60M_EP1_DZE","UH1Y_DZE","CH_47F_EP1_DZE","CH_47F_EP1_Black_DZE","CH_47F_EP1_GREY_DZE","CH_47F_EP1_DES_DZE","pook_transport_DZE","pook_transport_CDF_DZE","pook_gunship_DZE","pook_gunship_CDF_DZE"];
 
 //Small Vehicles
-DZMSSmallVic = ["hilux1_civil_3_open_DZE","SUV_TK_CIV_EP1","HMMWV_DZ","UAZ_Unarmed_UN_EP1","HMMWV_Ambulance_CZ_DES_EP1","LandRover_TK_CIV_EP1","SUV_Camo"];
+DZMSSmallVic = ["hilux1_civil_3_open_DZE","SUV_TK_CIV_EP1_DZE","HMMWV_DZ","UAZ_Unarmed_UN_EP1_DZE","HMMWV_Ambulance_CZ_DES_EP1_DZE","LandRover_TK_CIV_EP1_DZE","SUV_Camo","Nissan_Orange_DZE","BTR40_TK_INS_EP1_DZE","Jeep_DZE","ScrapAPC_DZE","Tractor_Armored_DZE"];
 
 //Large Vehicles
-DZMSLargeVic = ["Ural_TK_CIV_EP1","Ural_CDF","Ural_UN_EP1","UralCivil_DZE","UralCivil2_DZE","MTVR_DES_EP1","MTVR","Kamaz_DZE","KamazOpen_DZE"];
+DZMSLargeVic = ["Kamaz_DZE","MTVR_DES_EP1_DZE","Ural_INS_DZE","Ural_CDF_DZE","Ural_TK_CIV_EP1_DZE","Ural_UN_EP1_DZE","V3S_Open_TK_CIV_EP1_DZE","V3S_Open_TK_EP1_DZE","T810A_ACR_DZE","T810A_ACR_DES_DZE","T810A_ACR_OPEN_DZE","T810A_ACR_DES_OPEN_DZE","MTVR_Open_DZE","MTVR_DZE"];
 
 ////////////////////////////////////////////////////////////////
 // Weapons that can be added to AI or crates
