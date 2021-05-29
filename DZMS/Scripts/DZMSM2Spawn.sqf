@@ -76,7 +76,9 @@ if !(isNil "_mission") then {
 		_attachments = configFile >> "CfgWeapons" >> _weapon >> "Attachments";
 		if (isClass _attachments && count _attachments > 0) then {
 			_attach = configName (_attachments call BIS_fnc_selectRandom);
-			_unit addMagazine _attach;
+			if !(_attach == "Attachment_Tws") then { // blacklist thermal scope
+				_unit addMagazine _attach;
+			};
 		};
 	};
 	
