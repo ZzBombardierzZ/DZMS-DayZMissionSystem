@@ -2,8 +2,15 @@
 	_crate is the object to fill
 	_type is the type of crate
 */
-_crate = _this select 0;
-_type = _this select 1;
+local _crate = _this select 0;
+local _type = _this select 1;
+local _scount = 0;
+local _sSelect = 0;
+local _item = "";
+local _ammo = [];
+local _cfg = "";
+local _attach = "";
+local _qty = 0;
 
 //////////////////////////////////////////////////////////////////
 // Medical Crates
@@ -50,7 +57,7 @@ if (_type == "store") then {
 		_sSelect = floor(random _sCount);
 		_item = DZMSPistol select _sSelect;
 		_crate addWeaponCargoGlobal [_item,1];
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		_ammo = getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
 		if (count _ammo > 0) then {
 			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
 		};
@@ -91,7 +98,7 @@ if (_type == "weapons") then {
 		_sSelect = floor(random _sCount);
 		_item = DZMSPistol select _sSelect;
 		_crate addWeaponCargoGlobal [_item,1];
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		_ammo = getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
 		if (count _ammo > 0) then {
 			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
 		};
@@ -109,7 +116,7 @@ if (_type == "weapons") then {
 		_wepArray = DZMSCrateWeps call BIS_fnc_selectRandom;
 		_item = _wepArray call BIS_fnc_selectRandom;
 		_crate addWeaponCargoGlobal [_item,1];
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		_ammo = getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
 		if (count _ammo > 0) then {
 			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
 		};
@@ -150,7 +157,7 @@ if (_type == "weapons2") then {
 		_sSelect = floor(random _sCount);
 		_item = DZMSPistol select _sSelect;
 		_crate addWeaponCargoGlobal [_item,1];
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		_ammo = getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
 		if (count _ammo > 0) then {
 			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
 		};
@@ -161,7 +168,7 @@ if (_type == "weapons2") then {
 		_wepArray = DZMSCrateWeps call BIS_fnc_selectRandom;
 		_item = _wepArray call BIS_fnc_selectRandom;
 		_crate addWeaponCargoGlobal [_item,1];
-		_ammo = [] + getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
+		_ammo = getArray (configFile >> "cfgWeapons" >> _item >> "magazines");
 		if (count _ammo > 0) then {
 			_crate addMagazineCargoGlobal [(_ammo select 0),(round(random 8))];
 		};

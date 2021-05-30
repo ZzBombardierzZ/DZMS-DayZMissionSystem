@@ -61,7 +61,7 @@ call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\DZMSConfig.sq
 if (DZMSDebug) then {diag_log text format ["[DZMS]: Currently Running Version: %1", DZMSVersion];};
 
 // Lets check for a copy-pasted config file
-if (DZMSVersion != "2.0") then {
+if (DZMSVersion != "2.1") then {
 	diag_log text format ["[DZMS]: Outdated Configuration Detected! Please Update DZMS!"];
 	diag_log text format ["[DZMS]: Old Versions are not supported by the Mod Author!"];
 };
