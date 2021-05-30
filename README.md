@@ -5,7 +5,7 @@ A Logic and Usability Rewrite of the DayZChernarus Mission System.
 
 Completely overhauled to integrate new features and updates from DayZ Mod 1.9+/DayZ Epoch 1.0.7+.
 
-Current Version is 2.0
+Current Version is 2.1
 
 If you are interested in helping, please contact me on EpochMod.com.
 
