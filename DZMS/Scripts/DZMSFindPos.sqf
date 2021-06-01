@@ -2,7 +2,6 @@ local _pos = [0,0,0];
 local _num = 1;
 local _findRun = true;
 local _markers = [];
-local _isOk = true;
 local _playerNear = true;
 local _isTavi = toLower worldName == "tavi";
 
@@ -15,7 +14,7 @@ while {_findRun} do {
 	} else {
 		_pos = [getMarkerPos "center",0,((getMarkerSize "center") select 1) * .75,30,0,.2,0,DZMSBlacklistZones] call BIS_fnc_findSafePos;
 	};
-	
+	local _isOk = true;
 	// Let's check for nearby water within 100 meters
 	{
 		if (surfaceIsWater _x) exitWith {_isOk = false;};
