@@ -200,10 +200,13 @@ DZMSAutoClaimAlert = {
 	local _unit = _this select 0;
 	local _mission = _this select 1;
 	local _type = _this select 2;
-	local _name = name _unit;
-	local _owner = owner _unit;
+	local _name = "";
+	local _owner = objNull;
 	if (typeName _unit == "ARRAY") then {
 		_name = _unit select 1;
+	} else {
+		_owner = owner _unit;
+		_name = name _unit;
 	};
 	
 	_message = call {
