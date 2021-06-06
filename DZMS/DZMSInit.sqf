@@ -4,14 +4,6 @@
 	It checks that it is safe to run, sets relations, and starts mission timers.
 	Updated for DZMS 2.0 by JasonTM
 */
-waitUntil{initialized};
-
-// Lets let the heavier scripts run first
-sleep 60;
-
-// Error Check
-if (!isServer) exitWith {diag_log text "[DZMS]: <ERROR> DZMS is Installed Incorrectly! DZMS is not Running!";};
-if (!isNil "DZMSInstalled") exitWith {diag_log text "[DZMS]: <ERROR> DZMS is Installed Twice or Installed Incorrectly!";};
 
 // Global for other scripts to check if DZMS is installed.
 DZMSInstalled = true;
@@ -50,6 +42,23 @@ call {
 //Destroy the global variable
 DZMSRelations = nil;
 
+// This variable is used to lock the mission spawning to avoid data collisions
+DZMSMarkerReady = true;
+
+// This array will store the data for missions
+DZMSMissionData = [];
+
+// This array will store the mission markers
+DZMSMarkers = [];
+
+// Let's initialize the mission count variables
+DZMSBanditRunning = 0;
+DZMSHeroRunning = 0;
+
+// Let's initialize the mission end times
+DZMSBanditEndTime = diag_tickTime;
+DZMSHeroEndTime = diag_tickTime;
+
 // We need to check for Epoch and OverWatch to adjust vehicle spawning, and configurations
 DZMSEpoch = isClass (configFile >> "CfgWeapons" >> "Chainsaw");
 DZMSOverwatch = isClass (configFile >> "CfgWeapons" >> "USSR_cheytacM200");
@@ -86,7 +95,7 @@ call {
 };
 
 // Lets compile our functions
-execVM "\z\addons\dayz_server\DZMS\Scripts\DZMSFunctions.sqf"; // execVM is appropriate here because line functions are saved to global variables.
+call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\Scripts\DZMSFunctions.sqf";
 DZMSAIKilled = compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\Scripts\DZMSAIKilled.sqf";
 DZMSAISpawn = compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\Scripts\DZMSAISpawn.sqf";
 DZMSM2Spawn = compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\Scripts\DZMSM2Spawn.sqf";
@@ -97,7 +106,7 @@ DZMSFindPos = compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\Scri
 DZMSSpawnObjects = compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\Scripts\DZMSSpawnObjects.sqf";
 
 // Let's get the clocks running!
-execVM "\z\addons\dayz_server\DZMS\Scripts\DZMSTimer.sqf";
+//execVM "\z\addons\dayz_server\DZMS\Scripts\DZMSTimer.sqf";
 
 // Get the static AI spawned (if applicable)
 if (DZMSStaticAI) then {

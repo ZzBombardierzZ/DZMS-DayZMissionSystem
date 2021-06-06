@@ -23,23 +23,43 @@ Installation
 
 4.	Put the "DZMS" folder into your Server.pbo.
 
-5.	Open up your ***server_monitor.sqf*** in the system folder in your server.PBO.
+5.	Open up your ***server_functions.sqf*** in the init folder in your server.PBO.
 
-	Search for this line:
-
-	```sqf
-	allowConnection = true;
-	```
-
-	And insert this line directly ***above*** it.
+	Place this line at the very bottom of the file.
 	
 	```sqf
-	[] ExecVM "\z\addons\dayz_server\DZMS\DZMSInit.sqf";
+	call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\DZMSInit.sqf";
 	```
-
-	If you have DZAI or WickedAI Installed, the DZMS line should go under theirs.
 	
 6.	Copy file ***sched_corpses.sqf*** into directory ***dayz_server\system\scheduler*** to overwrite the existing one.
+
+6.	Copy file ***sched_dzms.sqf*** into directory ***dayz_server\system\scheduler***.
+
+5.	Open up your ***sched_init.sqf*** in the ***dayz_server\system\scheduler*** folder in your server.PBO.
+
+	Find this line:
+	
+	```sqf
+	call compile preprocessFileLineNumbers (PATH+"sched_safetyVehicle.sqf");
+	```
+	
+	Place this line directly below it:
+	
+	```sqf
+	call compile preprocessFileLineNumbers (PATH+"sched_dzms.sqf");
+	```
+	
+	Find this line:
+	
+	```sqf
+	[ 300,	 	336,	sched_lootpiles_5m,         sched_lootpiles_5m_init ],
+	```
+	
+	Place this line directly below it:
+	
+	```sqf
+	[ 90,		60,		sched_dzms,					sched_dzms_init ],
+	```
 
 7.	(Optional) Change the settings in DZMSConfig.sqf.
 
