@@ -9,7 +9,7 @@
 				
 				// After the delay time, check player's location and either claim or not claim
 				if ((diag_tickTime - _claimTime) > DZMSAutoClaimDelayTime) then {
-					if ((_closestPlayer distance _coords) > DZMSAutoClaimAlertDistance) then {
+					if ((_closestPlayer distance _coords) > DZMSAutoClaimAlertDistance || {!alive _closestPlayer}) then {
 						[_closestPlayer,_name,"Stop"] call DZMSAutoClaimAlert; // Send alert to player who is closest
 						_closestPlayer = objNull; // Set to default
 						_acArray = []; // Set to default
