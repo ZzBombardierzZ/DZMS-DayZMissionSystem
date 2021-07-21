@@ -1,12 +1,14 @@
 /*
-	General Store Mission by JasonTM
+	Weapons Cache Mission by lazyink (Original Full Code by TheSzerdi & TAW_Tonic)
+	New Mission Format by Vampire
+	Updated for DZMS 2.0 by JasonTM
 */
 
 local _mission = count DZMSMissionData -1;
 local _aiType = _this select 0;
 local _coords = call DZMSFindPos;
-local _name = "General Store";
-local _localName = "STR_CL_DZMS_GS_TITLE";
+local _name = "Weapons Cache";
+local _localName = "STR_CL_DZMS_WCACHE_TITLE";
 local _hero = _aiType == "Hero";
 local _markerColor = ["ColorRed","ColorBlue"] select _hero;
 local _localized = ["STR_CL_MISSION_BANDIT","STR_CL_MISSION_HERO"] select _hero;
@@ -24,7 +26,7 @@ DZE_ServerMarkerArray set [count DZE_ServerMarkerArray, _markers]; // Markers ad
 local _markerIndex = count DZE_ServerMarkerArray - 1;
 PVDZ_ServerMarkerSend = ["start",_markers];
 publicVariable "PVDZ_ServerMarkerSend";
-[_aiType,_localName,"STR_CL_DZMS_GS_START"] call DZMSMessage;
+[_aiType,_localName,"STR_CL_DZMS_WCACHE_START"] call DZMSMessage;
 DZMSMarkerReady = true;
 
 // Add the mission's position to the global array so that other missions do not spawn near it.
@@ -45,42 +47,34 @@ while {!_playerNear && !_timeout} do {
 
 if (_timeout) exitWith {
 	[_mission, _aiType, _markerIndex, _posIndex] call DZMSAbortMission;
-	[_aiType,_localName,"STR_CL_DZMS_GS_FAIL"] call DZMSMessage;
+	[_aiType,_localName,"STR_CL_DZMS_WCACHE_FAIL"] call DZMSMessage;
 	diag_log format["DZMS: %1 %2 aborted.",_aiType,_name,_coords];
 };
 //////////////////////////////// End //////////////////////////////////////
 
-// Spawn Mission Objects
-local _objects = [[
-	["MAP_A_GeneralStore_01",[0,0],-120],
-	["MAP_Ind_TankSmall",[10.9,-12.9],-30],
-	["MAP_t_acer2s",[-6.1,-24.3]],
-	["MAP_t_acer2s",[-21.1,2.6]],
-	["MAP_t_acer2s",[7.9,19.6]],
-	["MAP_t_acer2s",[23,-7.2]]
+//Lets add the scenery
+[[
+	["Land_CamoNetB_NATO",[-0.0649,0.6025]]
 ],_coords,_mission] call DZMSSpawnObjects;
 
-local _store = _objects select 0;
+//We create the vehicles like normal
+[_mission,_coords,DZMSSmallVic,[10.0303,-12.2979]] call DZMSSpawnVeh;
+[_mission,_coords,DZMSLargeVic,[-6.2764,-14.086]] call DZMSSpawnVeh;
 
-// Spawn the crate
-[_mission,(_store modelToWorld [-8.94629,-3.66602,-1.2164]),"DZ_AmmoBoxMedium2US","store",[0,0],-30] call DZMSSpawnCrate;
-[_mission,(_store modelToWorld [-6.87158,-3.67188,-1.21259]),"DZ_AmmoBoxMedium2US","weapons",[0,0],-30] call DZMSSpawnCrate;
-
-//Create the vehicle
-[_mission,_coords,DZMSSmallVic,[16.8,-17.4],98.6] call DZMSSpawnVeh;
+[_mission,_coords,"DZ_AmmoBoxBigUS","weapons2",[0,0]] call DZMSSpawnCrate;
 
 //DZMSAISpawn spawns AI to the mission.
 //Usage: [_coords, count, skillLevel, Hero or Bandit, Mission Number]
-[[(_coords select 0) + 12,(_coords select 1) - 23,0],3,0,_aiType,_mission] call DZMSAISpawn;
-[[(_coords select 0) - 24,(_coords select 1) - 13,0],3,1,_aiType,_mission] call DZMSAISpawn;
-[[(_coords select 0) - 13,(_coords select 1) + 25,0],3,2,_aiType,_mission] call DZMSAISpawn;
-[[(_coords select 0) + 26,(_coords select 1) + 14,0],3,3,_aiType,_mission] call DZMSAISpawn;
+[[(_coords select 0) + 0.0352,(_coords select 1) - 6.8799, 0],4,0,_aiType,_mission] call DZMSAISpawn;
+[[(_coords select 0) + 0.0352,(_coords select 1) - 6.8799, 0],4,1,_aiType,_mission] call DZMSAISpawn;
+[[(_coords select 0) + 0.0352,(_coords select 1) - 6.8799, 0],4,2,_aiType,_mission] call DZMSAISpawn;
+[[(_coords select 0) + 0.0352,(_coords select 1) - 6.8799, 0],4,3,_aiType,_mission] call DZMSAISpawn;
 
 // Spawn Static M2 Gunner positions if enabled.
 if (DZMSM2Static) then {
 	[[
 		[(_coords select 0) + 25,(_coords select 1) - 25, 0],
-		(_store modelToWorld [7.69385,11.2803,-1.19305])
+		[(_coords select 0) - 25,(_coords select 1) + 25, 0]
 	],0,_aiType,_mission] call DZMSM2Spawn;
 };
 
@@ -93,6 +87,6 @@ if (DZMSM2Static) then {
 	_localName,
 	_markerIndex,
 	_posIndex,
-	"STR_CL_DZMS_GS_WIN",
-	"STR_CL_DZMS_GS_FAIL"
+	"STR_CL_DZMS_WCACHE_WIN",
+	"STR_CL_DZMS_WCACHE_FAIL"
 ] spawn DZMSWaitMissionComp;
