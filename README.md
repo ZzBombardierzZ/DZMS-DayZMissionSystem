@@ -18,12 +18,14 @@ Installation
 
 2.	Extract it to your Desktop or somewhere where you won't lose it.
 	Inside the Zip is this Readme.MD, a folder called Documentation, and one called DZMS.
+	
+3.	This mod is dependent on the Client Side Marker Manager. Download it ***[here](https://github.com/worldwidesorrow/Client-Side-Marker-Manager/)*** and install it according to the instructions.
 
-3.	Open your Server.PBO with the PBO unPacker of your choice.
+4.	Open your Server.PBO with the PBO unPacker of your choice.
 
-4.	Put the "DZMS" folder into your Server.pbo.
+5.	Put the "DZMS" folder into your Server.pbo.
 
-5.	Open up your ***server_functions.sqf*** in the init folder in your server.PBO.
+6.	Open up your ***server_functions.sqf*** in the init folder in your server.PBO.
 
 	Place this line at the very bottom of the file.
 	
@@ -31,11 +33,11 @@ Installation
 	call compile preprocessFileLineNumbers "\z\addons\dayz_server\DZMS\DZMSInit.sqf";
 	```
 	
-6.	Copy file ***sched_corpses.sqf*** into directory ***dayz_server\system\scheduler*** to overwrite the existing one.
+7.	Copy file ***sched_corpses.sqf*** into directory ***dayz_server\system\scheduler*** to overwrite the existing one.
 
-6.	Copy file ***sched_dzms.sqf*** into directory ***dayz_server\system\scheduler***.
+8.	Copy file ***sched_dzms.sqf*** into directory ***dayz_server\system\scheduler***.
 
-5.	Open up your ***sched_init.sqf*** in the ***dayz_server\system\scheduler*** folder in your server.PBO.
+9.	Open up your ***sched_init.sqf*** in the ***dayz_server\system\scheduler*** folder in your server.PBO.
 
 	Find this line:
 	
@@ -61,11 +63,11 @@ Installation
 	[ 90,		60,		sched_dzms,					sched_dzms_init ],
 	```
 
-7.	(Optional) Change the settings in DZMSConfig.sqf.
+10.	(Optional) Change the settings in DZMSConfig.sqf.
 
-8.	(Optionally Optional) Adjust the files in the ExtConfig folder. Select the appropriate file for the mod you are running.
+11.	(Optionally Optional) Adjust the files in the ExtConfig folder. Select the appropriate file for the mod you are running.
 
-9.	Repack your server PBO.
+12.	Repack your server PBO.
 
 ### Vanilla Mod Only
 
