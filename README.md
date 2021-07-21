@@ -69,6 +69,13 @@ Installation
 
 12.	Repack your server PBO.
 
+### Battleye
+If you are going to use the AI caching feature, then you need to add this exception to the end of line 46 or the one that starts with <code>5 hideObject</code>
+
+ ```sqf
+ !="this hideObject true"
+ ```
+
 ### Vanilla Mod Only
 
 1. Unpack your mission PBO.
