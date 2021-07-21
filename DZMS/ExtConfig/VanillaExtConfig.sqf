@@ -95,7 +95,6 @@ DZMSGear4 = [
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 // These are arrays of vehicle classnames for the missions.
-// Adjust to your liking.
 
 //Armed Choppers
 DZMSChoppers = ["UH1H_DZ","Mi17_DZ","UH1H_2_DZ"];
@@ -126,9 +125,9 @@ DZMSGeneralStore = ["ItemSandbag","equip_string","equip_duct_tape","equip_rope",
 DZMSCrateTools = ["ItemToolbox","ItemFishingPole","ItemGPS","ItemMap","ItemMachete","ItemKnife","ItemFlashlight","ItemMatchbox","ItemHatchet","Binocular_Vector"];
 DZMSMeds = [_bloodbag,"ItemBandage","ItemAntibiotic","ItemPainkiller","ItemMorphine","ItemAntibacterialWipe","ItemEpinephrine","FoodMRE","ItemWaterBottleSafe"];
 DZMSPacks = ["DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Pouch","DZ_ALICE_Pack_EP1","DZ_TK_Assault_Pack_EP1","DZ_British_ACU","DZ_CivilBackpack_EP1","DZ_Backpack_EP1"];
-
-// Items and tools that are only added to crates
 DZMSGrenades = ["HandGrenade_west","FlareGreen_M203","FlareWhite_M203"];
-DZMSBuildSupply = [[2,"equip_1inch_metal_pipe"],[2,"equip_2inch_metal_pipe"],[2,"equip_metal_sheet"],[2,"equip_metal_sheet_rusted"],[1,"equip_nails"],[5,"ItemStone"],[3,"ItemPlank"],[4,"ItemLog"],[1,"ItemCamonet"]]; // [Number to add to crate,Item]
-DZMSBuildSupply2 = [[1,"ItemScrews"],[1,"ItemPadlock"],[1,"ItemRSJ"],[1,"ItemConcreteBlock"],[1,"PartGeneric"],[1,"PartGlass"],[1,"PartFueltank"],[1,"PartWheel"],[1,"PartEngine"]];
+DZMSBuildSupply = [[2,"equip_1inch_metal_pipe"],[2,"equip_2inch_metal_pipe"],[2,"equip_metal_sheet"],[2,"equip_metal_sheet_rusted"],[5,"ItemStone"],[3,"ItemPlank"],[4,"ItemLog"],[1,"ItemCamonet"]]; // [Number to add to crate,Item]
+DZMSCraftingSupply = ["ItemScrews","ItemPadlock","ItemRSJ","ItemConcreteBlock","equip_nails","equip_rag","equip_rope","equip_duct_tape","equip_string","equip_comfreyleafs","equip_herb_box"];
 DZMSBuildTools = ["ItemCrowbar","ItemEtool","ItemToolbox","ItemSledgeHammer","ItemShovel","ItemPickaxe","ItemDIY_wood","ItemDIY_Gate"];
+DZMSVehAmmo = ["100Rnd_762x51_M240","100Rnd_762x54_PK","150Rnd_127x107_DSHKM"]; // Not sure if can use 150Rnd_127x107_DSHKM
+DZMSVehParts = ["PartEngine","PartFueltank","PartGeneric","PartGlass","PartVRotor","PartWheel","ItemFuelcan","ItemJerrycan"];

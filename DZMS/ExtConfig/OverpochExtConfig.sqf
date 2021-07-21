@@ -82,22 +82,22 @@ local _bloodbag = ["bloodBagONEG","ItemBloodbag"] select dayz_classicBloodBagSys
 /////////////////////////////////////////////////////////////
 // These are gear sets that will be randomly given to the AI
 DZMSGear0 = [
-	["ItemBandage","ItemBandage","ItemAntibiotic","ItemPainkiller","ItemSodaGrapeDrink","FoodBaconCooked"],
+	["ItemBandage","ItemSepsisBandage","ItemAntibiotic6","ItemPainkiller6","ItemSodaGrapeDrink","FoodBaconCooked"],
 	["ItemKnife","ItemFlashlight"]
 ];
 
 DZMSGear1 = [
-	["ItemBandage","ItemBandage","ItemPainkiller","ItemMorphine","ItemSodaRocketFuel","FoodGoatCooked"],
+	["ItemBandage","ItemSepsisBandage","ItemPainkiller6","ItemMorphine","ItemSodaRocketFuel","FoodGoatCooked"],
 	["ItemToolbox","ItemEtool"]
 ];
 
 DZMSGear2 = [
-	["ItemBandage","ItemAntibacterialWipe",_bloodbag,"ItemPainkiller","ItemSodaSacrite","FishCookedTrout"],
+	["ItemBandage","ItemAntibacterialWipe",_bloodbag,"ItemPainkiller6","ItemSodaSacrite","FishCookedTrout"],
 	["ItemMatchbox","ItemHatchet"]
 ];
 
 DZMSGear3 = [
-	["ItemBandage","ItemBandage","ItemMorphine","ItemHeatPack","ItemSodaRabbit","FoodMRE"],
+	["ItemBandage","ItemSepsisBandage","ItemMorphine","ItemHeatPack","ItemSodaRabbit","FoodMRE"],
 	["ItemCrowbar","ItemMachete"]
 ];
 
@@ -106,10 +106,12 @@ DZMSGear4 = [
 	["ItemGPS","Binocular_Vector"]
 ];
 
+// New to DayZ Epoch 1.0.7. Dog tags can be traded at hero and bandit vendors for +/- humanity.
+DZMS_HeroDogTag = .15; // Chance for a dog tag on hero NPC: Between 0 and 1.
+DZMS_BanditDogTag = .15; // Chance for a dog tag on bandit NPC: Between 0 and 1.
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 // These are arrays of vehicle classnames for the missions.
-// Adjust to your liking.
 
 //Armed Choppers
 DZMSChoppers = ["BAF_Merlin_DZE","UH60M_MEV_EP1_DZ","CH_47F_EP1_DZE","UH1H_DZE","Mi17_DZE","UH60M_EP1_DZE","UH1Y_DZE","MH60S_DZE","UH1H_CDF_DZE","UH1H_WD_DZE","UH1H_2_DZE","UH1H_DES_DZE","UH1H_GREY_DZE","UH1H_BLACK_DZE","UH1H_SAR_DZE","Mi17_DZE","Mi17_TK_EP1_DZE","Mi17_UN_CDF_EP1_DZE","Mi17_CDF_DZE","Mi17_DES_DZE","Mi17_GREEN_DZE","Mi17_BLUE_DZE","Mi17_BLACK_DZE","Mi171Sh_CZ_EP1_DZE","MH60S_DZE","Ka60_GL_PMC_DZE","AW159_Lynx_BAF_DZE","UH60M_EP1_DZE","UH1Y_DZE","CH_47F_EP1_DZE","CH_47F_EP1_Black_DZE","CH_47F_EP1_GREY_DZE","CH_47F_EP1_DES_DZE","pook_transport_DZE","pook_transport_CDF_DZE","pook_gunship_DZE","pook_gunship_CDF_DZE"];
@@ -146,14 +148,14 @@ DZMSAIWeps = [DZMSAK,DZMSSpare,DZMSACRSD,DZMSACR,DZMSSCAR,DZMSSMG,DZMSSniper,DZM
 DZMSCrateWeps = [DZMSAK,DZMSSpare,DZMSACRSD,DZMSACR,DZMSSCAR,DZMSSMG,DZMSSniper,DZMSTavor,DZMSG3,DZMSMasada,DZMSLMG,DZMSHk417,DZMSHk416,DZMSG36,DZMSHkDMR];
 
 // Items and tools that can be added to crates
-DZMSGeneralStore = ["forest_net_kit","ItemMixOil","ItemWaterBottleSafe","ItemSodaCoke","ItemSodaPepsi","ItemSodaMdew","ItemSodaMtngreen","ItemSodaR4z0r","ItemSodaClays","ItemSodaSmasht","ItemSodaDrwaste","ItemSodaFranka","ItemSodaLemonade","ItemSodaLirik","ItemSodaLvg","ItemSodaMzly","ItemSodaPeppsy","ItemSodaRabbit","ItemSodaSacrite","ItemSodaRocketFuel","ItemSodaGrapeDrink","ItemSherbet","FoodPistachio","FoodNutmix","FoodChipsSulahoops","FoodChipsMysticales","FoodChipsChocolate","FoodCandyChubby","FoodCandyAnders","FoodCandyLegacys","FoodCandyMintception","FoodCakeCremeCakeClean","FoodCanBeef","FoodCanPotatoes","FoodCanGriff","FoodCanBadguy","FoodCanBoneboy","FoodCanCorn","FoodCanCurgon","FoodCanDemon","FoodCanFraggleos","FoodCanHerpy","FoodCanDerpy","FoodCanOrlok","FoodCanPowell","FoodCanTylers","FoodCanUnlabeled","FoodCanBakedBeans","FoodCanSardines","FoodCanFrankBeans","FoodCanPasta","FoodCanRusUnlabeled","FoodCanRusStew","FoodCanRusPork","FoodCanRusPeas","FoodCanRusMilk","FoodCanRusCorn","ItemJerrycan"];
-DZMSCrateTools = ["ItemToolbox","ItemFishingPole","ItemGPS","ItemMap","ItemMachete","ItemKnife","ItemFlashlight","ItemMatchbox","ItemHatchet","Binocular_Vector"];
-DZMSMeds = [_bloodbag,"ItemBandage","ItemAntibiotic","ItemPainkiller","ItemMorphine","ItemAntibacterialWipe","ItemEpinephrine","FoodMRE","ItemWaterBottleSafe"];
-DZMSPacks = ["DZ_Patrol_Pack_EP1","DZ_Assault_Pack_EP1","DZ_Czech_Vest_Pouch","DZ_ALICE_Pack_EP1","DZ_TK_Assault_Pack_EP1","DZ_British_ACU","DZ_CivilBackpack_EP1","DZ_Backpack_EP1","DZ_LargeGunBag_EP1"];
-
-// Items and tools that are only added to crates
+DZMSGeneralStore = ["ItemTent","ItemTentWinter","forest_net_kit","ItemMixOil","ItemWaterBottleSafe","ItemSodaCoke","ItemSodaPepsi","ItemSodaMdew","ItemSodaMtngreen","ItemSodaR4z0r","ItemSodaClays","ItemSodaSmasht","ItemSodaDrwaste","ItemSodaFranka","ItemSodaLemonade","ItemSodaLirik","ItemSodaLvg","ItemSodaMzly","ItemSodaPeppsy","ItemSodaRabbit","ItemSodaSacrite","ItemSodaRocketFuel","ItemSodaGrapeDrink","ItemSherbet","FoodPistachio","FoodNutmix","FoodChipsSulahoops","FoodChipsMysticales","FoodChipsChocolate","FoodCandyChubby","FoodCandyAnders","FoodCandyLegacys","FoodCandyMintception","FoodCakeCremeCakeClean","FoodCanBeef","FoodCanPotatoes","FoodCanGriff","FoodCanBadguy","FoodCanBoneboy","FoodCanCorn","FoodCanCurgon","FoodCanDemon","FoodCanFraggleos","FoodCanHerpy","FoodCanDerpy","FoodCanOrlok","FoodCanPowell","FoodCanTylers","FoodCanUnlabeled","FoodCanBakedBeans","FoodCanSardines","FoodCanFrankBeans","FoodCanPasta","FoodCanRusUnlabeled","FoodCanRusStew","FoodCanRusPork","FoodCanRusPeas","FoodCanRusMilk","FoodCanRusCorn","ItemJerrycan"];
+DZMSCrateTools = ["ItemToolbox","ItemFishingPole","ItemGPS","ItemMap","ItemMachete","ItemKnife","ItemFlashlight","ItemMatchbox","ItemHatchet","Binocular_Vector","ItemKeyKit","Binocular","ItemCompass","NVGoggles_DZE","ItemRadio"];
+DZMSMeds = [_bloodbag,"ItemBandage","ItemAntibiotic6","ItemPainkiller6","ItemMorphine","ItemAntibacterialWipe","ItemEpinephrine","ItemSepsisBandage","equip_woodensplint","FoodMRE","ItemWaterBottleSafe"];
+DZMSPacks = ["Patrol_Pack_DZE1","Assault_Pack_DZE1","Czech_Vest_Pouch_DZE1","TerminalPack_DZE1","TinyPack_DZE1","ALICE_Pack_DZE1","TK_Assault_Pack_DZE1","CompactPack_DZE1","British_ACU_DZE1","GunBag_DZE1","NightPack_DZE1","SurvivorPack_DZE1","AirwavesPack_DZE1","CzechBackpack_DZE1","WandererBackpack_DZE1","LegendBackpack_DZE1","CoyoteBackpack_DZE1","LargeGunBag_DZE1"];
 DZMSGrenades = ["HandGrenade_west","FlareGreen_M203","FlareWhite_M203"];
-DZMSBuildSupply = [[6,"CinderBlocks"],[2,"MortarBucket"],[2,"PartPlywoodPack"],[6,"PartPlankPack"]]; // [Number to add to crate,Item]
-DZMSBuildSupply2 = [[3,"ItemPole"],[3,"ItemSandbag"],[3,"ItemWire"],[1,"ItemFireBarrel_kit"],[1,"forest_large_net_kit"],[1,"ItemComboLock"],[1,"ItemLockbox"],[3,"ItemTankTrap"]]; // [Number to add to crate,Item]
-DZMSBuildTools = ["ItemCrowbar","ItemEtool","ItemToolbox","ItemSledgeHammer","ChainSaw"];
-DZMSHighValue = ["ItemBriefcase100oz","ItemVault"];
+DZMSBuildSupply = [[3,"CinderBlocks"],[1,"MortarBucket"],[3,"ItemPole"],[3,"PartPlywoodPack"],[3,"PartPlankPack"],[3,"ItemSandbag"],[3,"ItemWire"],[1,"ItemFireBarrel_kit"],[1,"forest_large_net_kit"],[1,"ItemComboLock"],[3,"ItemTankTrap"],[1,"ItemRSJ"]]; // [Number to add to crate,Item]
+DZMSCraftingSupply = ["equip_tent_poles","equip_nails","ItemScrews","equip_scrapelectronics","equip_floppywire","equip_metal_sheet","equip_1inch_metal_pipe","equip_2inch_metal_pipe","equip_rope","ItemLightBulb","ItemCorrugated","ItemMetalSheet"];
+DZMSBuildTools = ["ItemCrowbar","ItemEtool","ItemToolbox","ItemSledgeHammer","ChainSaw","Hammer_DZE","ItemSledge","Handsaw_DZE","ItemSolder_DZE"];
+DZMSVehAmmo = ["100Rnd_762x51_M240","1500Rnd_762x54_PKT","2000Rnd_762x51_M134","100Rnd_762x54_PK","100Rnd_127x99_M2","150Rnd_127x107_DSHKM"];
+DZMSVehParts = ["PartEngine","PartFueltank","PartGeneric","PartGlass","PartVRotor","PartWheel","ItemFuelcan","ItemJerrycan","ItemFuelBarrel"];
+DZMSHighValue = ["ItemTallSafe","ItemVault","ItemVault2","ItemLockbox","ItemLockbox2","ItemLockboxWinter","ItemLockboxWinter2","plot_pole_kit"];
