@@ -89,7 +89,7 @@
 					_warnArray = [];
 					PVDZ_ServerMarkerSend = ["removeSingle",_autoMarkDot];
 					publicVariable "PVDZ_ServerMarkerSend";
-					_markers set [3, nil];
+					_markers set [3, 1];
 					DZE_ServerMarkerArray set [_markerIndex, _markers];
 				} else {
 					// Player is alive but did not return to the mission
@@ -102,7 +102,7 @@
 						_warnArray = [];
 						PVDZ_ServerMarkerSend = ["removeSingle",_autoMarkDot];
 						publicVariable "PVDZ_ServerMarkerSend";
-						_markers set [3, nil];
+						_markers set [3, 1];
 						DZE_ServerMarkerArray set [_markerIndex, _markers];
 					};
 				};
