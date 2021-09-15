@@ -130,9 +130,9 @@ local _playerNear = false;
 local _newCount = 0;
 
 while {!_complete} do {
+	_newCount = (DZMSMissionData select _mission) select 0;
 	if (DZMSAICount) then {
 		// Check to see if the AI count has changed and update the marker.
-		_newCount = (DZMSMissionData select _mission) select 0;
 		if (_newCount != _aiCount) then {
 			_aiCount = _newCount;
 			_text = if (_hero) then {
@@ -227,7 +227,7 @@ while {!_complete} do {
 		};
 		
 		// Check for completion
-		if (((DZMSMissionData select _mission) select 0) <= _killReq) then {
+		if (_newCount <= _killReq) then {
 			if ([_coords,10] call DZMSNearPlayer) then {
 				_complete = true;
 				[_aiType,"STR_CL_DZMS_AN2_TITLE","STR_CL_DZMS_AN2_WIN"] call DZMSMessage;
