@@ -182,7 +182,7 @@ while {!_complete} do {
 		
 		_chute = createVehicle ["ParachuteMediumEast", _newPos, [], 0, "FLY"];
 		_chute setPos _newPos;
-		_box = [_mission,_coords,"DZ_AmmoBoxBigUS","weapons",[0,0,200]] call DZMSSpawnCrate;
+		_box = (["AmmoBoxBig","DZ_AmmoBoxBigUS"] select DZMSEpoch) createVehicle [(_coords select 0),(_coords select 1),200];
 		_box attachTo [_chute, [0, 0, 1]];
 		
 		deleteWaypoint [_aiGrp, 1];
@@ -207,6 +207,10 @@ while {!_complete} do {
 			};
 			detach _box;
 			_coords = [(getPos _box select 0), (getPos _box select 1), 0];
+			
+			// Sometimes players are unable to access the crate object after being attached/detached server side. So the fix is to delete the box and create a new one.
+			deleteVehicle _box;
+			_box = [_mission,_coords,"DZ_AmmoBoxBigUS","weapons",[0,0]] call DZMSSpawnCrate;
 			_box setPos _coords;
 			deleteVehicle _chute;
 			
