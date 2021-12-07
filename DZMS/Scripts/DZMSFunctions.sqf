@@ -94,20 +94,6 @@ DZMSCleanupThread = {
 					_x call sched_co_deleteVehicle;
 				} count _staticGuns;
 				
-				uiSleep 10; // Need to sleep to let the group count get to zero
-				
-				// Remove AI groups if mission times out
-				{
-					if (count units _x == 0) then {
-						deleteGroup _x;
-						_groups = _groups - [_x];
-						//diag_log format ["DZMS: Group %1 deleted.",_x];
-						if (count _groups > 0) then {
-							diag_log format ["DZMS: Group array %1",_groups];
-						};
-					};
-				} count _groups;
-				
 				// delete mission crates if enabled
 				if (DZMSSceneryDespawnLoot || _time0ut) then {
 					if (count _crates > 0) then {
