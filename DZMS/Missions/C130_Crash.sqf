@@ -14,7 +14,7 @@ local _markerColor = ["ColorRed","ColorBlue"] select _hero;
 local _localized = ["STR_CL_MISSION_BANDIT","STR_CL_MISSION_HERO"] select _hero;
 local _startTime = diag_tickTime;
 
-diag_log format["[DZMS]: %1 %2 starting at %2.",_aiType,_name,_coords];
+diag_log format["[DZMS]: %1 %2 starting at %3.",_aiType,_name,_coords];
 
 ////////////////////// Do not edit this section ///////////////////////////
 //[position,createMarker,setMarkerColor,setMarkerType,setMarkerShape,setMarkerBrush,setMarkerSize,setMarkerText,setMarkerAlpha]
@@ -48,7 +48,7 @@ while {!_playerNear && !_timeout} do {
 if (_timeout) exitWith {
 	[_mission, _aiType, _markerIndex, _posIndex] call DZMSAbortMission;
 	[_aiType,_localName,"STR_CL_DZMS_C130_FAIL"] call DZMSMessage;
-	diag_log format["DZMS: %1 %2 aborted.",_aiType,_name,_coords];
+	diag_log format["DZMS: %1 %2 aborted.",_aiType,_name];
 };
 //////////////////////////////// End //////////////////////////////////////
 
