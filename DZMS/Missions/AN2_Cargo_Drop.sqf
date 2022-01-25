@@ -128,6 +128,7 @@ local _leftTime	= 0;
 local _warnArray = [];
 local _playerNear = false;
 local _newCount = 0;
+local _fallCount = -1;
 
 while {!_complete} do {
 	_newCount = (DZMSMissionData select _mission) select 0;
@@ -197,8 +198,8 @@ while {!_complete} do {
 	if (_dropped) then {
 		//The box was dropped, lets get it on the ground.
 		// If the descent takes more than 45 seconds the chute is probably stuck in a tree.
-		if (isNil "_fallCount") then {
-			local _fallCount = 0;
+		if (_fallCount < 0) then {
+			_fallCount = 0;
 			while {_fallCount < 90} do {
 				uiSleep .5;
 				//if ((([_chute] call FNC_GetPos) select 2) < 2) then {_fallCount = 91};
